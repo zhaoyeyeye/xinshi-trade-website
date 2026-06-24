@@ -594,6 +594,19 @@ section {
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-left: 3px solid var(--color-accent);
   background: rgba(255, 255, 255, 0.03);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.contact-qr-code {
+  width: 96px;
+  height: 96px;
+  flex: 0 0 auto;
+  object-fit: cover;
+  border: 2px solid var(--color-accent);
+  border-radius: 4px;
 }
 
 .contact-person-label {
@@ -1270,5 +1283,14 @@ section {
 
   .hero-motto {
     letter-spacing: 0.1em;
+  }
+
+  .contact-person-card {
+    flex-wrap: wrap;
+  }
+
+  .contact-qr-code {
+    width: 80px;
+    height: 80px;
   }
 }
