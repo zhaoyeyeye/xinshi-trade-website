@@ -538,36 +538,29 @@ section {
 
 .cta-banner.is-poster {
   position: relative;
-  color: var(--color-white);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  overflow: hidden;
   padding: var(--space-xl) var(--space-md);
+  color: var(--color-white);
+  z-index: 1;
 }
 
 .cta-banner.is-poster::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(10, 10, 12, 0.55) 0%, rgba(10, 10, 12, 0.78) 100%);
-}
-
-.cta-banner.is-poster > * {
-  position: relative;
-  z-index: 1;
+  background: rgba(20, 20, 26, 0.75); /* 深色高级灰遮罩 */
+  z-index: -1;
 }
 
 .cta-banner.is-poster .section-eyebrow {
   color: #e7a6a8;
 }
 
-.cta-banner.is-poster .section-title {
-  color: var(--color-white);
-}
-
+.cta-banner.is-poster .section-title,
 .cta-banner.is-poster .section-desc {
-  color: #d8d6cd;
+  color: var(--color-white) !important;
 }
 
 .btn {
@@ -629,15 +622,21 @@ section {
   border-left: 3px solid var(--color-accent);
   background: rgba(255, 255, 255, 0.03);
   display: flex;
+  flex-direction: row !important; /* 强制横向排版 */
   justify-content: space-between;
   align-items: center;
-  gap: var(--space-md);
+  gap: 1rem;
+}
+
+.contact-person-info {
+  flex: 1;
+  min-width: 0;
 }
 
 .contact-qr-code {
-  width: 96px;
-  height: 96px;
-  flex: 0 0 auto;
+  width: 85px;
+  height: 85px;
+  flex-shrink: 0; /* 核心：防止二维码在窄屏被压缩或换行 */
   object-fit: contain;
   background: var(--color-white);
   border: 2px solid var(--color-accent);
@@ -1319,12 +1318,8 @@ section {
     letter-spacing: 0.1em;
   }
 
-  .contact-person-card {
-    flex-wrap: wrap;
-  }
-
   .contact-qr-code {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
   }
 }
