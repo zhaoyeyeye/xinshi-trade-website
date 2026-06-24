@@ -158,10 +158,11 @@ a {
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  align-items: flex-start;
+  justify-content: flex-end;
+  text-align: left;
   padding: 0 var(--space-md);
+  padding-bottom: 15vh;
   color: var(--color-white);
 }
 
@@ -196,8 +197,8 @@ a {
   content: "";
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  transform: none;
   width: 64px;
   height: 1px;
   background: rgba(255, 255, 255, 0.4);
@@ -567,6 +568,37 @@ section {
 .cta-banner.is-poster .section-title,
 .cta-banner.is-poster .section-desc {
   color: var(--color-white) !important;
+}
+
+.has-video-bg {
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 2rem;
+  text-align: left;
+}
+
+.has-video-bg .bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.has-video-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 20, 26, 0.7); /* 深色遮罩 */
+  z-index: 1;
+}
+
+.has-video-bg .section-eyebrow {
+  color: #e7a6a8;
+  position: relative;
+  z-index: 2;
 }
 
 .btn {

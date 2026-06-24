@@ -30,7 +30,7 @@
 </header>
 
 <section class="hero-video">
-  <video id="heroVideo" autoplay muted loop playsinline
+  <video id="heroVideo" autoplay muted playsinline
     webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5" x5-video-player-fullscreen="false">
     <source src="../videos/promo1.mp4#t=0.001" type="video/mp4">
   </video>
@@ -143,10 +143,15 @@
   <a href="products.html" class="btn btn-accent">进入产品中心</a>
 </section>
 
-<section class="cta-banner is-poster" style="background-image: url('../images/truck4.jpg');">
-  <span class="section-eyebrow">Media Center</span>
-  <h2 class="section-title">走进新石，见证每一吨矿石的蜕变</h2>
-  <a href="gallery.html" class="btn btn-accent">浏览厂区实拍</a>
+<section class="cta-banner has-video-bg">
+  <video class="bg-video" autoplay muted loop playsinline webkit-playsinline x5-playsinline>
+    <source src="../videos/factory9.mp4" type="video/mp4">
+  </video>
+  <div class="cta-content" style="position: relative; z-index: 2;">
+    <span class="section-eyebrow">Media Center</span>
+    <h2 class="section-title" style="color: #ffffff;">走进新石，见证每一吨矿石的蜕变</h2>
+    <a href="gallery.html" class="btn btn-accent">浏览厂区实拍</a>
+  </div>
 </section>
 
 <section class="contact-section" id="contact">
@@ -276,6 +281,18 @@
     const heroVideo = document.getElementById('heroVideo');
     if (heroVideo) heroVideo.play();
   }, { once: true });
+
+  const heroVideo = document.getElementById('heroVideo');
+  if (heroVideo) {
+    heroVideo.currentTime = 3; // 初始跳过前3秒
+    heroVideo.addEventListener('timeupdate', () => {
+      // 当视频快结束时，强行跳回第3秒继续播放，实现完美避开开头的循环
+      if (heroVideo.currentTime >= heroVideo.duration - 0.5) {
+        heroVideo.currentTime = 3;
+        heroVideo.play();
+      }
+    });
+  }
 </script>
 </body>
 </html>
